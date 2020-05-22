@@ -4,27 +4,29 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：  主页 展示了系统整体的概览和集群Worker列表。
+<meta name="description" content="前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：
+注：文中所有图片皆为高清大图，若觉得显示模糊，可以“右键 -&gt; 在新链接中打开图片”查看。
+ 主页 展示了系统整体的概览和集群Worker列表。
 任务创建 创建需要被调度执行的任务，入口为主页 -&gt; 任务管理 -&gt; 新建任务。
   任务名称：名称，便于记忆与搜索，无特殊用途，请尽量简短（占用数据库字段空间）
   任务描述：描述，无特殊作用，请尽量简短（占用数据库字段空间）
-  任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参TaskContext对象的jobParams字段）（进行一次处理器开发就能理解了）
+  任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参TaskContext对象的jobParams属性）（进行一次处理器开发就能理解了）
   定时信息：由下拉框和输入框组成
  API -&gt; 不需要填写任何参数（填了也不起作用） CRON -&gt; 填写 CRON 表达式（可以找个在线生成网站生成） 固定频率 -&gt; 填写整数，单位毫秒 固定延迟 -&gt; 填写整数，单位毫秒    执行配置：由执行类型（单机、广播和MapReduce）、处理器类型和处理器参数组成，后两项相互关联。
- 内置Java处理器 -&gt; 填写该处理器的全限定类名（eg, com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo） Java容器 -&gt; 填写容器ID#处理器全限定类名（eg，1#com.github.kfcfans.oms.container.DemoProcessor） SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载连接（http://xxx） PYTHON -&gt; 填写完整的python脚本或下载连接（http://xxx）    运行配置
- 最大实例数：该任务同时执行的数量（任务和实例就像是类和对象的关系，任务被调度执行后被称为实例） 单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用1个线程或3个线程&hellip;） 运行时间限制：限定任务的最大运行时间，超时则视为失败，单位毫秒，0代表不限制超时时间。    重试配置：
- 任务重试次数：实例级别，失败了整个任务实例重试，会更换TaskTracker（本次任务实例的Master节点），代价较大，大型Map/MapReduce慎用。 子任务重试次数：Task级别，每个子Task失败后单独重试，会更换ProcessorTracker（本次任务实际执行的Worker节点），代价较小，推荐使用。 注：对于单机任务来说，假如任务重试次数和子任务重试次数都配置了1且都执行失败，实际执行次数会变成4次！推荐任务实例重试配置为0，子任务重试次数根据实际情况配置。    机器配置：用来标明允许执行任务的机器状态，避开那些摇摇欲坠的机器，0代表无任何限制。">
+ 内置Java处理器 -&gt; 填写该处理器的全限定类名（eg, com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo） Java容器 -&gt; 填写容器ID#处理器全限定类名（eg，18#com.github.kfcfans.oms.container.DemoProcessor） SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载链接（http://xxx） PYTHON -&gt; 填写完整的python脚本或下载链接（http://xxx）    运行配置
+ 最大实例数：该任务同时执行的数量（任务和实例就像是类和对象的关系，任务被调度执行后被称为实例） 单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用必要的线程数&hellip;） 运行时间限制：限定任务的最大运行时间，超时则视为失败，单位毫秒，0代表不限制超时时间。    重试配置：">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="任务管理与在线运维" />
-<meta property="og:description" content="前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：  主页 展示了系统整体的概览和集群Worker列表。
+<meta property="og:description" content="前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：
+注：文中所有图片皆为高清大图，若觉得显示模糊，可以“右键 -&gt; 在新链接中打开图片”查看。
+ 主页 展示了系统整体的概览和集群Worker列表。
 任务创建 创建需要被调度执行的任务，入口为主页 -&gt; 任务管理 -&gt; 新建任务。
   任务名称：名称，便于记忆与搜索，无特殊用途，请尽量简短（占用数据库字段空间）
   任务描述：描述，无特殊作用，请尽量简短（占用数据库字段空间）
-  任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参TaskContext对象的jobParams字段）（进行一次处理器开发就能理解了）
+  任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参TaskContext对象的jobParams属性）（进行一次处理器开发就能理解了）
   定时信息：由下拉框和输入框组成
  API -&gt; 不需要填写任何参数（填了也不起作用） CRON -&gt; 填写 CRON 表达式（可以找个在线生成网站生成） 固定频率 -&gt; 填写整数，单位毫秒 固定延迟 -&gt; 填写整数，单位毫秒    执行配置：由执行类型（单机、广播和MapReduce）、处理器类型和处理器参数组成，后两项相互关联。
- 内置Java处理器 -&gt; 填写该处理器的全限定类名（eg, com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo） Java容器 -&gt; 填写容器ID#处理器全限定类名（eg，1#com.github.kfcfans.oms.container.DemoProcessor） SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载连接（http://xxx） PYTHON -&gt; 填写完整的python脚本或下载连接（http://xxx）    运行配置
- 最大实例数：该任务同时执行的数量（任务和实例就像是类和对象的关系，任务被调度执行后被称为实例） 单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用1个线程或3个线程&hellip;） 运行时间限制：限定任务的最大运行时间，超时则视为失败，单位毫秒，0代表不限制超时时间。    重试配置：
- 任务重试次数：实例级别，失败了整个任务实例重试，会更换TaskTracker（本次任务实例的Master节点），代价较大，大型Map/MapReduce慎用。 子任务重试次数：Task级别，每个子Task失败后单独重试，会更换ProcessorTracker（本次任务实际执行的Worker节点），代价较小，推荐使用。 注：对于单机任务来说，假如任务重试次数和子任务重试次数都配置了1且都执行失败，实际执行次数会变成4次！推荐任务实例重试配置为0，子任务重试次数根据实际情况配置。    机器配置：用来标明允许执行任务的机器状态，避开那些摇摇欲坠的机器，0代表无任何限制。" />
+ 内置Java处理器 -&gt; 填写该处理器的全限定类名（eg, com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo） Java容器 -&gt; 填写容器ID#处理器全限定类名（eg，18#com.github.kfcfans.oms.container.DemoProcessor） SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载链接（http://xxx） PYTHON -&gt; 填写完整的python脚本或下载链接（http://xxx）    运行配置
+ 最大实例数：该任务同时执行的数量（任务和实例就像是类和对象的关系，任务被调度执行后被称为实例） 单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用必要的线程数&hellip;） 运行时间限制：限定任务的最大运行时间，超时则视为失败，单位毫秒，0代表不限制超时时间。    重试配置：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kfcfans.github.io/docs/startup/4-console-guide/" />
 
@@ -32,7 +34,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.1006da92051f8320a1e02f25379a11b932d72118741cc4906590153c72ec2c7f.js" integrity="sha256-EAbakgUfgyCh4C8lN5oRuTLXIRh0HMSQZZAVPHLsLH8="></script>
+<script defer src="/en.search.min.546abf26000913a61ec6da135649306a254b28996689fdea4b0f7b6d6401730e.js" integrity="sha256-VGq/JgAJE6YextoTVkkwaiVLKJlmif3qSw97bWQBcw4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -311,7 +313,9 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><blockquote class="book-hint info">
-  前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：
+  <p>前端控制台允许开发者可视化地进行任务增、删、改、查等管理操作，同时也能直观地看到任务的运行数据，包括运行状态、详情和在线日志等。以下为对控制台的详细介绍：</p>
+<p><strong>注：文中所有图片皆为高清大图，若觉得显示模糊，可以“右键 -&gt; 在新链接中打开图片”查看。</strong></p>
+
 </blockquote>
 
 <h2 id="主页">主页</h2>
@@ -328,7 +332,7 @@ https://github.com/alex-shpak/hugo-book
 <p>任务描述：描述，无特殊作用，请尽量简短（占用数据库字段空间）</p>
 </li>
 <li>
-<p>任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参<code>TaskContext</code>对象的jobParams字段）（进行一次处理器开发就能理解了）</p>
+<p>任务参数：任务处理时能够获取到的参数（即各个Processor的process方法入参<code>TaskContext</code>对象的jobParams属性）（进行一次处理器开发就能理解了）</p>
 </li>
 <li>
 <p>定时信息：由下拉框和输入框组成</p>
@@ -342,17 +346,17 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>执行配置：由执行类型（单机、广播和MapReduce）、处理器类型和处理器参数组成，后两项相互关联。</p>
 <ul>
-<li>内置Java处理器 -&gt; 填写该处理器的全限定类名（eg, <code>com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo</code>）</li>
-<li>Java容器 -&gt; 填写<strong>容器ID#处理器全限定类名</strong>（eg，<code>1#com.github.kfcfans.oms.container.DemoProcessor</code>）</li>
-<li>SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载连接（http://xxx）</li>
-<li>PYTHON -&gt; 填写完整的python脚本或下载连接（http://xxx）</li>
+<li>内置Java处理器 -&gt; 填写该处理器的<strong>全限定类名</strong>（eg, <code>com.github.kfcfans.oms.processors.demo.MapReduceProcessorDemo</code>）</li>
+<li>Java容器 -&gt; 填写<strong>容器ID#处理器全限定类名</strong>（eg，<code>18#com.github.kfcfans.oms.container.DemoProcessor</code>）</li>
+<li>SHELL -&gt; 填写需要处理的脚本（直接复制文件内容）或脚本下载链接（http://xxx）</li>
+<li>PYTHON -&gt; 填写完整的python脚本或下载链接（http://xxx）</li>
 </ul>
 </li>
 <li>
 <p>运行配置</p>
 <ul>
 <li>最大实例数：该任务同时执行的数量（任务和实例就像是类和对象的关系，任务被调度执行后被称为实例）</li>
-<li>单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用1个线程或3个线程&hellip;）</li>
+<li>单机线程并发数：该实例执行过程中每个Worker使用的线程数量（MapReduce任务生效，其余无论填什么，都只会使用必要的线程数&hellip;）</li>
 <li>运行时间限制：限定任务的最大运行时间，超时则视为失败，单位<strong>毫秒</strong>，0代表不限制超时时间。</li>
 </ul>
 </li>
@@ -361,7 +365,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>任务重试次数：实例级别，失败了整个任务实例重试，会更换TaskTracker（本次任务实例的Master节点），代价较大，大型Map/MapReduce慎用。</li>
 <li>子任务重试次数：Task级别，每个子Task失败后单独重试，会更换ProcessorTracker（本次任务实际执行的Worker节点），代价较小，推荐使用。</li>
-<li>注：对于单机任务来说，假如任务重试次数和子任务重试次数都配置了1且都执行失败，实际执行次数会变成4次！推荐任务实例重试配置为0，子任务重试次数根据实际情况配置。</li>
+<li>注：<strong>请注意同时配置任务重试次数和子任务重试次数之后的重试放大</strong>，比如对于单机任务来说，假如任务重试次数和子任务重试次数都配置了1且都执行失败，实际执行次数会变成4次！推荐任务实例重试配置为0，子任务重试次数根据实际情况配置。</li>
 </ul>
 </li>
 <li>

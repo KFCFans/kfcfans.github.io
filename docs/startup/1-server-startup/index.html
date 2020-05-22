@@ -9,7 +9,7 @@
   任意 Spring Data Jpa 支持的关系型数据库（MySQL/Oracle/MS SQLServer&hellip;）
   MongoDB（可选），任意支持GridFS的mongoDB版本（4.2.6测试通过，其余未经测试，仅从理论角度分析可用），缺失该组件的情况下将无法使用在线日志、容器部署等扩展功能
   初始化关系数据库  调度服务器（oh-my-scheduler-server）的持久化层基于Spring Boot Jpa实现，对于能够直连数据库的应用，开发者仅需完成数据库的创建，即运行SQL：CREATE database if NOT EXISTS oms-product default character set utf8mb4 collate utf8mb4_unicode_ci;`
-  OhMyScheduler支持环境隔离，提供日常（daily）、预发（pre）和线上（product）三套环境，请根据使用的环境分别部署对应的数据库：oms-daily、oms-pre和oms-product。 调度服务器属于时间敏感应用，强烈建议检查当前数据库所使用的时区信息（show variables like &quot;%time_zone%&quot;;），务必确保time_zone代表的时区与JDBC URL中serverTimezone字段代表的时区一致！ 手动建表表SQL文件：下载地址  部署调度服务器—源码编译  调度服务器（oh-my-scheduler-server）支持任意的水平扩展，即多实例集群部署仅需要在同一个局域网内启动新的服务器实例，性能强劲无上限！
+  OhMyScheduler支持环境隔离，提供日常（daily）、预发（pre）和线上（product）三套环境，请根据使用的环境分别部署对应的数据库：oms-daily、oms-pre和oms-product。 调度服务器属于时间敏感应用，强烈建议检查当前数据库所使用的时区信息（show variables like &quot;%time_zone%&quot;;），务必确保time_zone代表的时区与JDBC URL中serverTimezone字段代表的时区一致！ 手动建表SQL文件：下载地址  部署调度服务器—源码编译  调度服务器（oh-my-scheduler-server）支持任意的水平扩展，即多实例集群部署仅需要在同一个局域网内启动新的服务器实例，性能强劲无上限！
  调度服务器（oh-my-scheduler-server）为了支持环境隔离，分别采用了日常（application-daily.properties）、预发（application-pre.properties）和线上（application-product.properties）三套配置文件，请根据实际需求进行修改，以下为配置文件详解。
    配置项 含义 可选     server.port SpringBoot配置，HTTP端口号，默认7700 否   oms.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="调度中心（Server）部署" />
@@ -18,7 +18,7 @@
   任意 Spring Data Jpa 支持的关系型数据库（MySQL/Oracle/MS SQLServer&hellip;）
   MongoDB（可选），任意支持GridFS的mongoDB版本（4.2.6测试通过，其余未经测试，仅从理论角度分析可用），缺失该组件的情况下将无法使用在线日志、容器部署等扩展功能
   初始化关系数据库  调度服务器（oh-my-scheduler-server）的持久化层基于Spring Boot Jpa实现，对于能够直连数据库的应用，开发者仅需完成数据库的创建，即运行SQL：CREATE database if NOT EXISTS oms-product default character set utf8mb4 collate utf8mb4_unicode_ci;`
-  OhMyScheduler支持环境隔离，提供日常（daily）、预发（pre）和线上（product）三套环境，请根据使用的环境分别部署对应的数据库：oms-daily、oms-pre和oms-product。 调度服务器属于时间敏感应用，强烈建议检查当前数据库所使用的时区信息（show variables like &quot;%time_zone%&quot;;），务必确保time_zone代表的时区与JDBC URL中serverTimezone字段代表的时区一致！ 手动建表表SQL文件：下载地址  部署调度服务器—源码编译  调度服务器（oh-my-scheduler-server）支持任意的水平扩展，即多实例集群部署仅需要在同一个局域网内启动新的服务器实例，性能强劲无上限！
+  OhMyScheduler支持环境隔离，提供日常（daily）、预发（pre）和线上（product）三套环境，请根据使用的环境分别部署对应的数据库：oms-daily、oms-pre和oms-product。 调度服务器属于时间敏感应用，强烈建议检查当前数据库所使用的时区信息（show variables like &quot;%time_zone%&quot;;），务必确保time_zone代表的时区与JDBC URL中serverTimezone字段代表的时区一致！ 手动建表SQL文件：下载地址  部署调度服务器—源码编译  调度服务器（oh-my-scheduler-server）支持任意的水平扩展，即多实例集群部署仅需要在同一个局域网内启动新的服务器实例，性能强劲无上限！
  调度服务器（oh-my-scheduler-server）为了支持环境隔离，分别采用了日常（application-daily.properties）、预发（application-pre.properties）和线上（application-product.properties）三套配置文件，请根据实际需求进行修改，以下为配置文件详解。
    配置项 含义 可选     server.port SpringBoot配置，HTTP端口号，默认7700 否   oms." />
 <meta property="og:type" content="article" />
@@ -28,7 +28,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.1006da92051f8320a1e02f25379a11b932d72118741cc4906590153c72ec2c7f.js" integrity="sha256-EAbakgUfgyCh4C8lN5oRuTLXIRh0HMSQZZAVPHLsLH8="></script>
+<script defer src="/en.search.min.546abf26000913a61ec6da135649306a254b28996689fdea4b0f7b6d6401730e.js" integrity="sha256-VGq/JgAJE6YextoTVkkwaiVLKJlmif3qSw97bWQBcw4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -329,7 +329,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>OhMyScheduler支持<strong>环境隔离</strong>，提供日常（daily）、预发（pre）和线上（product）三套环境，请根据使用的环境分别部署对应的数据库：<code>oms-daily</code>、<code>oms-pre</code>和<code>oms-product</code>。</li>
 <li>调度服务器属于<strong>时间敏感</strong>应用，强烈建议检查当前数据库所使用的时区信息（<code>show variables like &quot;%time_zone%&quot;;</code>），务必确保<code>time_zone</code>代表的时区与JDBC URL中<code>serverTimezone</code>字段代表的时区一致！</li>
-<li>手动建表表SQL文件：<a href="https://github.com/KFCFans/OhMyScheduler/blob/master/others/oms-sql.sql">下载地址</a></li>
+<li>手动建表SQL文件：<a href="https://github.com/KFCFans/OhMyScheduler/blob/master/others/oms-sql.sql">下载地址</a></li>
 </ul>
 <h2 id="部署调度服务器源码编译">部署调度服务器—源码编译</h2>
 <blockquote>
@@ -387,7 +387,7 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 <tr>
 <td>oms.container.retention.local</td>
-<td>扩展的报警服务Bean，多值逗号分割，默认为邮件报警</td>
+<td>本地容器保留天数，负数代表永久保留</td>
 <td>否</td>
 </tr>
 <tr>
@@ -425,8 +425,9 @@ https://github.com/alex-shpak/hugo-book
 </blockquote>
 <ol>
 <li>源码克隆：<a href="https://github.com/KFCFans/OhMyScheduler-Console">OhMyScheduler-Console</a></li>
-<li>替换地址：修改<code>main.js</code>中的<code>axios.defaults.baseURL</code>为服务器地址</li>
-<li>npm run build -&gt; nginx config</li>
+<li>替换地址：修改<code>main.js</code>中的<code>baseURL</code>为服务器地址</li>
+<li>npm run build</li>
+<li>将构建结果<code>dist</code>文件夹拷入Nginx静态目录下，修改配置文件，重启，enjoy～</li>
 </ol>
 <hr>
 <p><strong>特别鸣谢</strong>：感谢<a href="https://github.com/fengnan0929">某知名上市电商公司前端开发者</a>对本项目的大力支持！</p>
